@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Мои рецепты</h1>
+  
+    <mat-list role="list">
+      <mat-list-item *ngFor="let recipe of recipes$ | async" role="listitem">
+        <img matListItemAvatar *ngIf="recipe.imageUrl" [src]="recipe.imageUrl" alt="Фото рецепта">
+        
+        <span>{{ recipe.name }}</span>
+        <span class="spacer"></span>
+        <span class="date">{{ recipe.creationDate | date: 'dd.MM.yyyy' }}</span>
+      
+        <button mat-icon-button [routerLink]="['/edit', recipe.id]" color="primary" aria-label="Редактировать рецепт">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)="openDeleteDialog(recipe.id!)" color="warn" aria-label="Удалить рецепт">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-list>
+  
+    <a mat-fab color="primary" routerLink="/create" class="add-button">
+      <mat-icon>add</mat-icon>
+    </a>
+  </div>

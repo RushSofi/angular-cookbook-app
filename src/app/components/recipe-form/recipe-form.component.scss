@@ -1,0 +1,45 @@
+mat-form-field {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .ingredient-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .ingredient-fields {
+    display: flex;
+    flex-grow: 1;
+    gap: 16px;
+  }
+  
+  .ingredient-name {
+    flex-grow: 2;
+  }
+  
+  .ingredient-quantity, .ingredient-units {
+    flex-grow: 1;
+  }
+  
+  .actions {
+    margin-top: 20px;
+  }
+
+  .image-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    gap: 10px;
+  }
+  
+  .image-preview {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }

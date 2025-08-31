@@ -1,0 +1,68 @@
+<mat-card>
+    <mat-card-title>{{ isEditMode ? 'Редактирование рецепта' : 'Новый рецепт' }}</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Название рецепта</mat-label>
+          <input matInput formControlName="name" placeholder="Например, Борщ">
+        </mat-form-field>
+  
+        <mat-form-field appearance="outline">
+          <mat-label>Описание приготовления</mat-label>
+          <textarea matInput formControlName="description" rows="5"></textarea>
+        </mat-form-field>
+  
+        <h3>Ингредиенты</h3>
+  
+        <div formArrayName="ingredients">
+          <div *ngFor="let ingredient of ingredients.controls; let i=index" class="ingredient-row">
+            <div [formGroupName]="i" class="ingredient-fields">
+              <mat-form-field appearance="outline" class="ingredient-name">
+                <mat-label>Название</mat-label>
+                <input matInput formControlName="name">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="ingredient-quantity">
+                <mat-label>Кол-во</mat-label>
+                <input matInput formControlName="quantity" type="number">
+              </mat-form-field>
+  
+              <mat-form-field appearance="outline" class="ingredient-units">
+                <mat-label>Ед. изм.</mat-label>
+                <mat-select formControlName="units">
+                  <mat-option value="г">г</mat-option>
+                  <mat-option value="кг">кг</mat-option>
+                  <mat-option value="мл">мл</mat-option>
+                  <mat-option value="л">л</mat-option>
+                  <mat-option value="шт">шт</mat-option>
+                  <mat-option value="по вкусу">по вкусу</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <button mat-icon-button color="warn" (click)="removeIngredient(i)" type="button">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </div>
+  
+        <button mat-stroked-button color="primary" type="button" (click)="addIngredient()">
+          <mat-icon>add</mat-icon>
+          Добавить ингредиент
+        </button>
+
+        <h3>Изображение</h3>
+        <div class="image-upload-container">
+          <img [src]="imagePreview" alt="Предпросмотр изображения" class="image-preview">
+          <button mat-stroked-button type="button" (click)="fileInput.click()">Выбрать файл</button>
+          <input hidden type="file" #fileInput (change)="onFileSelected($event)" accept="image/*">
+        </div>
+  
+        <div class="actions">
+          <button mat-raised-button color="primary" type="submit">Сохранить рецепт</button>
+        </div>
+  
+      </form>
+    </mat-card-content>
+  </mat-card>
