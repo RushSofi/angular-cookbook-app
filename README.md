@@ -1,27 +1,68 @@
-# Cookbook
+# CookBook App на Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+### Приложение «Поваренная книга» —  проект для демонстрации навыков во фронтенд-разработке.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Обзор проекта
+Это одностраничное веб-приложение (SPA) для создания и управления кулинарными рецептами. Проект полностью соответствует требованиям тестового задания: реализован весь цикл **CRUD** (Создание, Чтение, Обновление, Удаление) на **Angular 16** с использованием **Angular Material** и облачной базы данных **Firebase**.
 
-## Code scaffolding
+### Ключевые особенности
+* **Полный CRUD-функционал:** управление рецептами, включая их создание, просмотр, редактирование и удаление.
+* **Реактивные формы:** динамическое добавление и удаление полей для ингредиентов в удобной и гибкой форме.
+* **Синхронизация в реальном времени:** данные хранятся в **Firebase Firestore**, за счёт чего список рецептов мгновенно обновляется без перезагрузки страницы.
+* **Работа с изображениями:** каждый рецепт можно дополнить миниатюрой. Вместо использования платного хранилища Firebase Storage, я реализовала клиентское **сжатие изображений** и их сохранение в базе данных в формате Base64.
+* **Адаптивный дизайн:** интерфейс приложения создан с помощью **Angular Material**.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+### Технологии и стек
+* **Фронтенд-фреймворк:** Angular 16
+* **UI-библиотека:** Angular Material
+* **Управление состоянием:** RxJS (Observables)
+* **Облачная база данных:** Firebase Firestore
+* **Сжатие изображений:** `browser-image-compression`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+---
 
-## Running unit tests
+### Как запустить проект локально
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+#### Предварительные условия
+* Установленный [Node.js](https://nodejs.org/) (версия 16 или выше)
+* [Angular CLI](https://cli.angular.io/), установленный глобально: `npm install -g @angular/cli`
+* Собственный проект на [Firebase](https://firebase.google.com/) с включенными сервисами **Firestore** и **Authentication**.
 
-## Running end-to-end tests
+#### Установка и запуск
+1.  Клонируйте репозиторий:
+    ```bash
+    git clone [https://github.com/RushSofi/angular-cookbook-app.git](https://github.com/RushSofi/angular-cookbook-app.git)
+    ```
+2.  Перейдите в папку проекта:
+    ```bash
+    cd angular-cookbook-app
+    ```
+3.  Установите все зависимости:
+    ```bash
+    npm install
+    ```
+4.  **Важно:** Для подключения к базе данных создайте в папке `src/environments/` файлы `environment.ts` и `environment.development.ts` и вставьте в них свою конфигурацию Firebase:
+    ```typescript
+    export const environment = {
+      production: false,
+      firebase: {
+        apiKey: "ВАШ_API_KEY",
+        authDomain: "ВАШ_AUTH_DOMAIN",
+        projectId: "ВАШ_PROJECT_ID",
+        storageBucket: "ВАШ_STORAGE_BUCKET",
+        messagingSenderId: "ВАШ_MESSAGING_SENDER_ID",
+        appId: "ВАШ_APP_ID"
+      }
+    };
+    ```
+5.  Запустите сервер разработки:
+    ```bash
+    ng serve --open
+    ```
+    Приложение откроется в вашем браузере по адресу `http://localhost:4200/`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
