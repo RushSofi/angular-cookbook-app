@@ -35,7 +35,7 @@
 #### Установка и запуск
 1.  Клонируйте репозиторий:
     ```bash
-    git clone [https://github.com/RushSofi/angular-cookbook-app.git](https://github.com/RushSofi/angular-cookbook-app.git)
+    git clone https://github.com/RushSofi/angular-cookbook-app.git
     ```
 2.  Перейдите в папку проекта:
     ```bash
