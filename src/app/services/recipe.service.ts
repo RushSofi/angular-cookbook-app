@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, docData, updateDoc, DocumentReference } from '@angular/fire/firestore'; // <-- Добавь docData и updateDoc
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, docData, updateDoc, DocumentReference } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Timestamp } from 'firebase/firestore'; 
